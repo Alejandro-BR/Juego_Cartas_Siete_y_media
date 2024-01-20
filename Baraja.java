@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Barajas {
   //Palos
   //Valores o Numeros
@@ -12,6 +13,8 @@ public class Barajas {
   //Extraer la carta 
 }
 =======
+=======
+>>>>>>> Jmolmel
 public class Baraja {
     public static void main(String[] args) {
         //////// HOLA SOY JOSE
@@ -20,5 +23,9 @@ public class Baraja {
         //////// HOLA SOY JOSE
         String holaSoyJose;
     }
+<<<<<<< HEAD
+}
+>>>>>>> Jmolmel
+=======
 }
 >>>>>>> Jmolmel
