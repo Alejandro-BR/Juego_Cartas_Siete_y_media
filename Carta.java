@@ -1,5 +1,13 @@
+/**
+ * Clase Carta
+ * 
+ * @author Alejandro Barrionuevo Rosado
+ */
+
 public class Carta {
-  //Palo
-  //Numero
-  //Valor
+
+  ////////Atributos
+  String palo;
+  int numero;
+  int valor;
 }
