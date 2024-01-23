@@ -18,17 +18,15 @@
 public class Carta {
 
   //////// Atributos
-  private String palo; // Oros, Copas, Espadas y Bastos.
-  private String numero; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
+  private String palos; // Oros, Copas, Espadas y Bastos.
+  private String numeros; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
   private double valor; // Los numeros tienen su numero como valor y Sota, Caballo y rey medio punto.
 
   //////// Constructores
-  public void Carta() {
-    String[] palos = {"Oros", "Copas", "Espadas", "Bastos"};
-    String[] numeros = {"1", "2", "3", "4","5", "6", "7", "Sota", "Caballo", "Rey"};
-    double[] valor = {0.5,1,2,3,4,5,6,7};
-
-    
+  public void Carta(String palos, String numeros, double valor) {
+    this.palos = palos;
+    this.numeros = numeros;
+    this.valor = valor;
   }
 
   //////// Mertodos

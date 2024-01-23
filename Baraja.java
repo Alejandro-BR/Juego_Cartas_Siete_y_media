@@ -9,13 +9,13 @@
 // Inicializar la baraja (crear la baraja)
 // Extraer la carta
 public class Baraja {
-    public static void main(String[] args) {
 
-        //////// ATRIBUTOS
+ //////// ATRIBUTOS
+ private String[] palos = {"Oros", "Copas", "Espadas", "Bastos"}; // Oros, Copas, Espadas y Bastos.
+ private String[] cartas = {"1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"}; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
 
-        //////// CONSTRUCTORES
+ //////// CONSTRUCTORES
 
-        //////// METODOS
+ //////// METODOS
 
-    }
 }
