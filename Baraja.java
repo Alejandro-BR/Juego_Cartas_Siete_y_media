@@ -8,7 +8,7 @@
 // Inicializar el numero de cartas
 // Inicializar la baraja (crear la baraja)
 // Extraer la carta
-public class Barajas {
+public class Baraja {
     public static void main(String[] args) {
 
         //////// ATRIBUTOS
