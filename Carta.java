@@ -23,12 +23,40 @@ public class Carta {
   private double valor; // Los numeros tienen su numero como valor y Sota, Caballo y rey medio punto.
 
   //////// Constructores
-  public void Carta(String palos, String numeros, double valor) {
+  public Carta(String palos, String numeros, double valor) {
     this.palos = palos;
     this.numeros = numeros;
+    // this.valor = darValor(valor);
     this.valor = valor;
   }
 
   //////// Mertodos
-
+  public double darValor() {
+    switch (this.numeros) {
+      case "1":
+        this.valor = 1.0;
+        break;
+      case "2":
+        this.valor = 2.0;
+        break;
+      case "3":
+        this.valor = 3.0;
+        break;
+      case "4":
+        this.valor = 4.0;
+        break;
+      case "5":
+        this.valor = 5.0;
+        break;
+      case "6":
+        this.valor = 6.0;
+        break;
+      case "7":
+        this.valor = 7.0;
+        break;
+      default:
+        this.valor = 0.5;
+        break;
+    }
+  }
 }
