@@ -32,9 +32,6 @@ public class Carta {
 
   //////// Mertodos
 
-  
-
-
   public void darPuntuacion() {
     switch (this.valores) {
       case "1":

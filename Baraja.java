@@ -1,5 +1,14 @@
-// @author Alejandro Barrionuevo Rosado
-// @author Jose Molina Melendez
+/**
+ * Clase Baraja
+ * 
+ * Contiene un conjunto (array) de cartas, incluyendo todos los
+ * palos y valores posibles. Debe contener los métodos de barajar las
+ * cartas y repartir una carta.
+ * 
+ * @author Alejandro Barrionuevo Rosado
+ * @author Jose Molina Melendez
+ */
+
 // Palos
 // valores o valores
 // valores de cartas en total seran 40 cartas
