@@ -31,7 +31,7 @@ public class Carta {
   }
 
   //////// Mertodos
-  public double darValor() {
+  public void darValor() {
     switch (this.numeros) {
       case "1":
         this.valor = 1.0;
