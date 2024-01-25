@@ -30,7 +30,7 @@ public class Baraja {
   public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
     Carta[] cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
-    inicializarCartas();
+    // inicializarCartas();
   }
 
   //////// METODOS
@@ -108,9 +108,11 @@ public class Baraja {
 
   public static void main(String[] args) {
     Baraja barajita = new Baraja();
+    Carta carta = new Carta();
+    
     barajita.inicializarCartas();
     barajita.barajar();
-    barajita.extraerCarta();
+    carta = barajita.extraerCarta();
     barajita.getBaraja();
   }
 }
