@@ -22,9 +22,7 @@ public class Baraja {
 
   //////// ATRIBUTOS
   private String[] palos = { "Oros", "Copas", "Espadas", "Bastos" }; // Oros, Copas, Espadas y Bastos.
-  private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7,
-                                                                                              // Sota(8), Caballo(9) y
-                                                                                              // Rey(10).
+  private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
   private Carta[] cartas;
   private int numCartas;
 
@@ -32,11 +30,11 @@ public class Baraja {
   public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
     Carta[] cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
-    inicializarCarta();
+    inicializarCartas();
   }
 
   //////// METODOS
-  public void inicializarCarta() {
+  public void inicializarCartas() {
     int index = 0;
     for (int i = 0; i < cartas.length; i++) {
       for (int j = 0; j < cartas.length; j++) {
@@ -44,6 +42,43 @@ public class Baraja {
         cartas[index].darPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
         index++;
       }
+    }
+  }
+  /**
+  * BARAJAR
+  */
+  public void barajar() {
+    for (int i = 0; i < cartas.length; i++) {
+      int aleatorio = (int) (Math.random()*cartas.length); //Sumamos 1 para que el total sea 41.
+      Carta aux = cartas[i];
+      cartas[i] = cartas[aleatorio];
+      cartas[aleatorio] = aux;
+    }
+  }
+
+  /**
+   * EXTRAER CARTA
+   * @return cartaExtraida
+   */
+  public Carta extraerCarta() {
+    Carta cartaExtraida = null;
+    if (numCartas == 0) {
+      System.out.println("La baraja esta vacia.");
+    } else {
+      numCartas--;
+      cartaExtraida = cartas[numCartas];    //Cojemos ultima posicion de la baraja
+      cartas[numCartas] = null;             //Limpiamos la carta de la baraja
+      System.out.println("Carta extraida: " + cartaExtraida.toString());
+    }
+    return cartaExtraida; 
+  }
+
+  /**
+   * GET BARAJA
+   */
+  public void getBaraja() {
+    for (int i = 0; i < cartas.length; i++) {
+      System.out.printf("%-15s Puntuación: %-3.1f\n", cartas[i], cartas[i].getPuntuacion());
     }
   }
 
@@ -71,16 +106,11 @@ public class Baraja {
     return cartas;
   }
 
-  public void barajar() {
-
+  public static void main(String[] args) {
+    Baraja barajita = new Baraja();
+    barajita.inicializarCartas();
+    barajita.barajar();
+    barajita.extraerCarta();
+    barajita.getBaraja();
   }
-
-  public void mostrarBaraja() {
-
-  }
-
-  public void extraerCarta() {
-
-  }
-
 }
