@@ -17,26 +17,28 @@
 // Inicializar el numero de cartas
 // Inicializar la baraja (crear la baraja)
 // Extraer la carta
+
 public class Baraja {
 
- //////// ATRIBUTOS
+  //////// ATRIBUTOS
   private String[] palos = {"Oros", "Copas", "Espadas", "Bastos"}; // Oros, Copas, Espadas y Bastos.
   private String[] valores = {"1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"}; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
   private Carta[] cartas;
   private int numCartas;
 
- //////// CONSTRUCTORES
+  //////// CONSTRUCTORES
   public Baraja() {      //La baraja contiene 40 cartas multiplicando el palo por valor.
     Carta[] cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
     inicializarCarta();
   }
- //////// METODOS
+  //////// METODOS
   public void inicializarCarta(){
     int index = 0;
     for (int i = 0; i < cartas.length; i++) {
       for (int j = 0; j < cartas.length; j++) {
-        cartas[index] = new Carta(palos, valores, darPuntuacion());
+        cartas[index] = new Carta(palos[i], valores[j], 0); 
+        cartas[index].darPuntuacion();  //Le damos valor con la funcion .darPuntuacion()
         index++;
       }
     }
