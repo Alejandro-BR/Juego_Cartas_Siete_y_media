@@ -28,10 +28,8 @@ public class Baraja {
 
   //////// CONSTRUCTORES
   public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
-    // Carta[] cartas = new Carta[palos.length * valores.length];
     cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
-    // inicializarCartas();
   }
 
   //////// METODOS
