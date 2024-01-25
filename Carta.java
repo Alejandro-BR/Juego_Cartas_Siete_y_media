@@ -30,11 +30,9 @@ public class Carta {
    * @param valores
    * @param puntuacion
    */
-  public Carta(String palos, String valores, double puntuacion) {
+  public Carta(String palos, String valores) {
     this.palos = palos;
     this.valores = valores;
-    // this.puntuacion = darpuntuacion(puntuacion);
-    this.puntuacion = puntuacion;
   }
 
   //////// Mertodos

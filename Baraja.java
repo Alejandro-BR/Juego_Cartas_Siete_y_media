@@ -39,7 +39,7 @@ public class Baraja {
     int index = 0;
     for (int i = 0; i < palos.length; i++) {
       for (int j = 0; j < valores.length; j++) {
-        cartas[index] = new Carta(palos[i], valores[j], 0);
+        cartas[index] = new Carta(palos[i], valores[j]);
         cartas[index].darPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
         index++;
       }
@@ -109,7 +109,7 @@ public class Baraja {
 
   public static void main(String[] args) {
     Baraja barajita = new Baraja();
-    Carta carta = new Carta();
+    Carta carta = new Carta("oro", "1");
     
     barajita.inicializarCartas();
     barajita.barajar();
