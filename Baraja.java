@@ -43,8 +43,34 @@ public class Baraja {
       }
     }
   }
+
   public void barajar() {
     
   }
-
+  
+  /**
+   * 
+   * @return palos
+   */
+  public String[] getPalos() {
+    return palos;
+  }
+  
+  /**
+   * 
+   * @return valores
+   */
+  public String[] getValores() {
+    return valores;
+  }
+  
+  /**
+   * 
+   * @return cartas
+   */
+  public Carta[] getCartas() {
+    return cartas;
+  }
+  
+  
 }

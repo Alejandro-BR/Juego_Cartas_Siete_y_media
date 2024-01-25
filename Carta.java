@@ -23,6 +23,13 @@ public class Carta {
   private double puntuacion; // Los numeros tienen su numero como puntuacion y Sota, Caballo y rey medio punto.
 
   //////// Constructores
+  /**
+   * Contructor de la clase Carta
+   * 
+   * @param palos
+   * @param valores
+   * @param puntuacion
+   */
   public Carta(String palos, String valores, double puntuacion) {
     this.palos = palos;
     this.valores = valores;
@@ -61,14 +68,26 @@ public class Carta {
     }
   }
 
+  /**
+   * 
+   * @return palos
+   */
   public String getPalos() {
     return palos;
   }
 
+  /**
+   * 
+   * @return valores
+   */
   public String getValores() {
     return valores;
   }
 
+  /**
+   * 
+   * @return puntuacion
+   */
   public double getPuntuacion() {
     return puntuacion;
   }
