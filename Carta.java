@@ -90,4 +90,10 @@ public class Carta {
     return puntuacion;
   }
 
+  @Override
+  public String toString() {
+    return "Carta [palos=" + palos + ", valores=" + valores + ", puntuacion=" + puntuacion + "]";
+  }
+  
+
 }
