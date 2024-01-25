@@ -21,24 +21,27 @@
 public class Baraja {
 
   //////// ATRIBUTOS
-  private String[] palos = {"Oros", "Copas", "Espadas", "Bastos"}; // Oros, Copas, Espadas y Bastos.
-  private String[] valores = {"1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey"}; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
+  private String[] palos = { "Oros", "Copas", "Espadas", "Bastos" }; // Oros, Copas, Espadas y Bastos.
+  private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7,
+                                                                                              // Sota(8), Caballo(9) y
+                                                                                              // Rey(10).
   private Carta[] cartas;
   private int numCartas;
 
   //////// CONSTRUCTORES
-  public Baraja() {      //La baraja contiene 40 cartas multiplicando el palo por valor.
+  public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
     Carta[] cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
     inicializarCarta();
   }
+
   //////// METODOS
-  public void inicializarCarta(){
+  public void inicializarCarta() {
     int index = 0;
     for (int i = 0; i < cartas.length; i++) {
       for (int j = 0; j < cartas.length; j++) {
-        cartas[index] = new Carta(palos[i], valores[j], 0); 
-        cartas[index].darPuntuacion();  //Le damos valor con la funcion .darPuntuacion()
+        cartas[index] = new Carta(palos[i], valores[j], 0);
+        cartas[index].darPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
         index++;
       }
     }
@@ -51,7 +54,7 @@ public class Baraja {
   public String[] getPalos() {
     return palos;
   }
-  
+
   /**
    * 
    * @return valores
@@ -59,7 +62,7 @@ public class Baraja {
   public String[] getValores() {
     return valores;
   }
-  
+
   /**
    * 
    * @return cartas
@@ -67,25 +70,17 @@ public class Baraja {
   public Carta[] getCartas() {
     return cartas;
   }
-  
+
   public void barajar() {
-    
-  }
-  
 
-  public void mostrarBaraja(){
-    
   }
 
-  public void extraerCarta(){
-    
+  public void mostrarBaraja() {
+
   }
 
-  //////// MAIN
+  public void extraerCarta() {
 
-  public static void main(String[] args) {
-    Baraja baraja = new Baraja();
-    baraja.inicializarCarta(); //Inicializamos las cartas de la baraja
   }
 
 }
