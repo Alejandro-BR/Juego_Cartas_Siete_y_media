@@ -44,10 +44,6 @@ public class Baraja {
     }
   }
 
-  public void barajar() {
-    
-  }
-  
   /**
    * 
    * @return palos
@@ -72,5 +68,24 @@ public class Baraja {
     return cartas;
   }
   
+  public void barajar() {
+    
+  }
   
+
+  public void mostrarBaraja(){
+    
+  }
+
+  public void extraerCarta(){
+    
+  }
+
+  //////// MAIN
+
+  public static void main(String[] args) {
+    Baraja baraja = new Baraja();
+    baraja.inicializarCarta(); //Inicializamos las cartas de la baraja
+  }
+
 }
