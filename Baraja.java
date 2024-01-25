@@ -9,40 +9,37 @@
  * @author Jose Molina Melendez
  */
 
-// Palos
-// valores o valores
-// valores de cartas en total seran 40 cartas
-// Una array de la clase carta
-// Un array de 40 cartas
-// Inicializar el numero de cartas
-// Inicializar la baraja (crear la baraja)
-// Extraer la carta
-
 public class Baraja {
 
   //////// ATRIBUTOS
   private String[] palos = { "Oros", "Copas", "Espadas", "Bastos" }; // Oros, Copas, Espadas y Bastos.
-  private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
+  private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7, Sota, Caballo y Rey.
   private Carta[] cartas;
   private int numCartas;
 
   //////// CONSTRUCTORES
   public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
-    cartas = new Carta[palos.length * valores.length];
     numCartas = palos.length * valores.length;
+    cartas = new Carta[numCartas];
   }
 
   //////// METODOS
-  public void inicializarCartas() {
+  /**
+   * inicializaBaraja
+   * 
+   * Inicializar la baraja
+   */
+  public void inicializaBaraja() {
     int index = 0;
     for (int i = 0; i < palos.length; i++) {
       for (int j = 0; j < valores.length; j++) {
         cartas[index] = new Carta(palos[i], valores[j]);
-        cartas[index].darPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
+        cartas[index].setPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
         index++;
       }
     }
   }
+
   /**
   * BARAJAR
   */
@@ -73,11 +70,11 @@ public class Baraja {
   }
 
   /**
-   * GET BARAJA
+   * 40 * carta.toString()
    */
   public void getBaraja() {
     for (int i = 0; i < cartas.length; i++) {
-      System.out.printf("%-15s Puntuación: %-3.1f\n", cartas[i], cartas[i].getPuntuacion());
+      System.out.printf("%-20s PUNTUACION: %1.2f\n",cartas[i].toString(), cartas[i].getPuntuacion());
     }
   }
 

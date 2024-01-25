@@ -19,7 +19,7 @@ public class Carta {
 
   //////// Atributos
   private String palos; // Oros, Copas, Espadas y Bastos.
-  private String valores; // 1, 2, 3, 4, 5, 6, 7, Sota(8), Caballo(9) y Rey(10).
+  private String valores; // 1, 2, 3, 4, 5, 6, 7, Sota, Caballo y Rey.
   private double puntuacion; // Los numeros tienen su numero como puntuacion y Sota, Caballo y rey medio punto.
 
   //////// Constructores
@@ -28,7 +28,6 @@ public class Carta {
    * 
    * @param palos
    * @param valores
-   * @param puntuacion
    */
   public Carta(String palos, String valores) {
     this.palos = palos;
@@ -37,7 +36,7 @@ public class Carta {
 
   //////// Mertodos
 
-  public void darPuntuacion() {
+  public void setPuntuacion() {
     switch (this.valores) {
       case "1":
         this.puntuacion = 1.0;
@@ -95,7 +94,7 @@ public class Carta {
    */
   @Override
   public String toString() {
-    return "Carta palos =" + palos + "| valores =" + valores + "| puntuacion =" + puntuacion + " \n";
+    return String.format("%s de %s", this.valores, this.palos);
   }
   
 
