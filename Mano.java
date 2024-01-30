@@ -11,7 +11,8 @@
 public class Mano {
 
   //////// Atributos
-  private Carta[] cartas; // Array de cartas
+  private Carta[] cartas = new Carta[15]; // Array de cartas con un maximo de 15
+  //Suponiendo que siempre te salga una carta de 0,5 necesitarias 15 cartas para llegar al 7,5 por lo que ese sera el numero maximo
   private double puntuacionMano; // Puntuacion de la mano
   private int contador; // Variable auxiliar
 
@@ -24,7 +25,7 @@ public class Mano {
   public Mano(Carta cartas) {
     this.contador = 0;
     this.cartas[contador] = cartas;
-    setContador();
+    // setContador();
     this.puntuacionMano = 0;
   }
 
@@ -55,23 +56,23 @@ public class Mano {
     return puntuacionMano;
   }
 
-
-  public void setPuntuacionMano() {
-    for (int i = 0; i < cartas.length; i++) {
-      puntuacionMano += cartas[i].setPuntuacion();
-    }
-  }
-
   /**
    * Añadir una nueva Carta a la mano
    * 
    * @param cartas Objeto Carta
    */
   public void setCartas(Carta cartas) {
-    this.cartas[contador] = cartas;
     setContador();
+    this.cartas[contador] = cartas;
   }
 
-  
+  /**
+   * Aumentar la puntuacion de la mano
+   */
+  public void setPuntuacionMano() {
+    for (int i = 0; i <= contador; i++) {
+      this.puntuacionMano += cartas[i].getPuntuacion();
+    }
+  }
 
 }
