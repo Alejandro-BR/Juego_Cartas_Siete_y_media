@@ -26,8 +26,8 @@ public class Carta {
   /**
    * Contructor de la clase Carta
    * 
-   * @param palos
-   * @param valores
+   * @param palos String
+   * @param valores String
    */
   public Carta(String palos, String valores) {
     this.palos = palos;

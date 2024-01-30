@@ -6,10 +6,86 @@
  * para obtener la puntuación de su mano, otro para recibir una carta de
  * la baraja, realizar apuesta...
  * 
+ * La puntuacion de la mano y todo lo referente a la mano se creara en la clase
+ * Mano.
+ * 
  * @author Alejandro Barrionuevo Rosado
  * @author Jose Molina Melendez
  */
 
 public class Jugador {
-  
+
+  //////// Atributos
+  private int saldo; // Saldo que tiene el jugador
+  private int apuesta; // Apuesta del jugador
+  private String nombre; // Nombre del jugador
+
+  //////// Constructores
+  /**
+   * Contructor de la clase Jugador
+   * 
+   * @param saldo   int
+   * @param apuesta int
+   * @param nombre  String
+   */
+  public Jugador(int saldo, int apuesta, String nombre) {
+    this.saldo = saldo;
+    this.apuesta = apuesta;
+    this.nombre = nombre;
+  }
+
+  //////// Mertodos
+
+  /**
+   * Get Saldo
+   * 
+   * @return int
+   */
+  public int getSaldo() {
+    return saldo;
+  }
+
+  /**
+   * Get apuesta
+   * 
+   * @return int
+   */
+  public int getApuesta() {
+    return apuesta;
+  }
+
+  /**
+   * Get Nombre
+   * 
+   * @return String
+   */
+  public String getNombre() {
+    return nombre;
+  }
+
+  /**
+   * Cambiar el valor del atributo apuesta
+   * 
+   * @param apuesta int
+   */
+  public void setApuesta(int apuesta) {
+    this.apuesta = apuesta;
+  }
+
+  /**
+   * Cambiar el valor del atributo saldo
+   * 
+   * ganar --> suma
+   * perder --> resta
+   * 
+   * @param ganarRonda boolean
+   */
+  public void setSaldo(boolean ganarRonda) {
+    if (ganarRonda) {
+      this.saldo += this.apuesta;
+    } else {
+      this.saldo -= this.apuesta;
+    }
+  }
+
 }
