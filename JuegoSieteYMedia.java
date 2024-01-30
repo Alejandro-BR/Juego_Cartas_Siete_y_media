@@ -1,7 +1,7 @@
 /**
- * Metodo main
+ * Metodo main JuegoSieteYMedia
  * 
- * JuegoSieteYMedia: contendrá el método main, donde se hace la lógica
+ * Contendrá el método main, donde se hace la lógica
  * del turno primero del jugador hasta que se plante o pierda y luego el
  * turno de la banca.
  * 
