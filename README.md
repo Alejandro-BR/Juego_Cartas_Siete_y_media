@@ -1,12 +1,17 @@
-# Juego_Cartas_Siete_y_media
+# Juego de cartas Siete y media
 
-Alejandro Barrionuevo Rosado
-Jose Molina Melendez
+<br>
 
------------------------------------------------------------------------------------------
+**Alejandro Barrionuevo Rosado**
 
-SIETE Y MEDIA es un juego de cartas donde el objetivo principal es
-acercarse lo más posible a la puntuación de 7,5.
+**Jose Molina Melendez**
+
+<br>
+
+<hr>
+
+**SIETE Y MEDIA es un juego de cartas donde el objetivo principal es**
+**acercarse lo más posible a la puntuación de 7,5.**
 
 Se utiliza la baraja de cartas española de 4 palos y 10 cartas por cada palo.
 
@@ -70,7 +75,7 @@ Si decide seguir jugando se deberá volver a iniciar el juego, es decir se
 vuelven a tener todas las cartas en el mazo, se barajan, se le pide la
 cantidad de la apuesta al jugador y se comienza a entregar cartas.
 
-Clases:
+<h2>Clases:</h2>
 
 ● Carta: gestiona el palo y número asignado y también un método que te
 diga la puntuación de esa carta.
