@@ -45,7 +45,7 @@ public class Baraja {
   */
   public void barajar() {
     for (int i = 0; i < cartas.length; i++) {
-      int aleatorio = (int) (Math.random()*cartas.length); //Sumamos 1 para que el total sea 41.
+      int aleatorio = (int) (Math.random()*cartas.length); 
       Carta aux = cartas[i];
       cartas[i] = cartas[aleatorio];
       cartas[aleatorio] = aux;

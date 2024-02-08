@@ -34,7 +34,7 @@ public class Carta {
     this.valores = valores;
   }
 
-  //////// Mertodos
+  //////// Metodos
 
   public void setPuntuacion() {
     switch (this.valores) {

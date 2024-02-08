@@ -28,13 +28,12 @@ public class Jugador {
    * @param apuesta int
    * @param nombre  String
    */
-  public Jugador(int saldo, int apuesta, String nombre) {
+  public Jugador(int saldo, String nombre) {
     this.saldo = saldo;
-    this.apuesta = apuesta;
     this.nombre = nombre;
   }
 
-  //////// Mertodos
+  //////// Metodos
 
   /**
    * Get Saldo
@@ -87,5 +86,6 @@ public class Jugador {
       this.saldo -= this.apuesta;
     }
   }
+
 
 }

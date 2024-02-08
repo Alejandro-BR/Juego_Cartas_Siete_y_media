@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Clase Mano
  * 
@@ -12,7 +14,8 @@ public class Mano {
 
   //////// Atributos
   private Carta[] cartas = new Carta[15]; // Array de cartas con un maximo de 15
-  //Suponiendo que siempre te salga una carta de 0,5 necesitarias 15 cartas para llegar al 7,5 por lo que ese sera el numero maximo
+  // Suponiendo que siempre te salga una carta de 0,5 necesitarias 15 cartas para
+  // llegar al 7,5 por lo que ese sera el numero maximo
   private double puntuacionMano; // Puntuacion de la mano
   private int contador; // Variable auxiliar
 
@@ -22,14 +25,13 @@ public class Mano {
    * 
    * @param cartas Objeto Carta
    */
-  public Mano(Carta cartas) {
+  public Mano() { // Cartas carta
     this.contador = 0;
-    this.cartas[contador] = cartas;
-    // setContador();
+    // this.cartas[contador] = cartas;
     this.puntuacionMano = 0;
   }
 
-  //////// Mertodos
+  //////// Metodos
 
   /**
    * Aumentar la variable auxiliar
@@ -62,7 +64,9 @@ public class Mano {
    * @param cartas Objeto Carta
    */
   public void setCartas(Carta cartas) {
-    setContador();
+    if (contador != 0) {
+      setContador();
+    }
     this.cartas[contador] = cartas;
   }
 
@@ -70,9 +74,32 @@ public class Mano {
    * Aumentar la puntuacion de la mano
    */
   public void setPuntuacionMano() {
-    for (int i = 0; i <= contador; i++) {
-      this.puntuacionMano += cartas[i].getPuntuacion();
-    }
+    this.puntuacionMano += cartas[contador].getPuntuacion();
+  }
+
+  /**
+   * Mostrar la puntuacion
+   */
+  public void mostrarPuntuacion() {
+    System.out.println("Puntuacion de la mano: " + puntuacionMano);
+  }
+
+  /**
+   * toString
+   */
+  @Override
+  public String toString() {
+    return "Mano cartas = " + Arrays.toString(cartas) + ", puntuacionMano = " + puntuacionMano + ", contador = "
+        + contador
+        + "]";
+  }
+
+  /**
+   * 
+   * @return int
+   */
+  public int getContador() {
+    return contador;
   }
 
 }
