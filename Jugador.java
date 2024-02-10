@@ -68,6 +68,14 @@ public class Jugador {
    * @param apuesta int
    */
   public void setApuesta(int apuesta) {
+    if (apuesta > saldo) {
+      System.out.println("\nNo dispones de ese saldo.");
+      do {
+        System.out.print("Introduce una nueva apuesta porfavor: ");
+        apuesta = Integer.parseInt(System.console().readLine());
+      } while (apuesta > saldo);
+    }
+    
     this.apuesta = apuesta;
   }
 

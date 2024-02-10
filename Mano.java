@@ -91,7 +91,7 @@ public class Mano {
   public String toString() {
     return "Mano cartas = " + Arrays.toString(cartas) + ", puntuacionMano = " + puntuacionMano + ", contador = "
         + contador
-        + "]";
+        + " ";
   }
 
   /**
@@ -100,6 +100,17 @@ public class Mano {
    */
   public int getContador() {
     return contador;
+  }
+
+  /**
+   * Resetear la mano
+   */
+  public void reset() {
+    this.contador = 0;
+    this.puntuacionMano = 0;
+    for (int i = 0; i < cartas.length; i++) {
+      this.cartas[i] = null;
+    }
   }
 
 }
