@@ -22,6 +22,9 @@ public class JuegoSieteYMedia {
       System.out.println("\nBIENVENIDO AL JUEGO DE LA SIETE Y MEDIA\n");
 
       do {
+        barajaESP.inicializaBaraja(); // Inicializamos baraja
+        barajaESP.barajar(); // Barajamos
+
         // Nombre
         System.out.print("Jugador introduzca su nombre: ");
         String nombre = System.console().readLine();
@@ -40,8 +43,6 @@ public class JuegoSieteYMedia {
         // Jugador maquina = new Jugador(10, "Banca");
         Mano mano2 = new Mano();
 
-        barajaESP.inicializaBaraja(); // Inicializamos baraja
-        barajaESP.barajar(); // Barajamos
 
         // Apuesta
         boolean nuevaApuesta = true;
@@ -60,6 +61,7 @@ public class JuegoSieteYMedia {
           // Codigo del juego
           boolean salirBucle1 = false;
           do {
+
             mano1.setCartas(barajaESP.extraerCarta());
             mano1.setPuntuacionMano();
             mano1.mostrarPuntuacion();
@@ -91,22 +93,26 @@ public class JuegoSieteYMedia {
 
                 // Juega la maquina
                 do {
+                  mano1.getPuntuacionMano();
                   mano2.setCartas(barajaESP.extraerCarta()); // Extrae una carta
                   mano2.setPuntuacionMano(); // Cambia la puntuacion de la mano
                   mano2.mostrarPuntuacion(); // Muestra la puntuacion
                   if (mano2.getContador() == 0) {
                     mano2.setContador(); // Solo la primera vez despues no
                   }
+
                   System.out.println();
                   Thread.sleep(1000); // Esto es para aumentar el tiempo que tarda
-                } while (mano2.getPuntuacionMano() < 7.5);
+                } while (mano2.getPuntuacionMano() < 7.5 && mano2.getPuntuacionMano() <= mano1.getPuntuacionMano()); //Maquina saca carta hasta
+                //que <7.5 o hasta que supere a la mano del jugador.
 
-                if (mano2.getPuntuacionMano() == 7.5) { // La maquina gana
+                if (mano2.getPuntuacionMano() > 7.5 || mano2.getPuntuacionMano() < mano1.getPuntuacionMano()) { //La maquina pierde si se pasa de 7.5 O si la mano de maquina es menor que la del jugador
+                  ganar = true;
+                  System.out.println("¡ENHORABUENA!La banca se ha pasado.");
+                } else if (mano2.getPuntuacionMano() == 7.5 || mano1.getPuntuacionMano() < mano2.getPuntuacionMano()) { // La maquina gana si obtiene 7.5 O si la puntuacion del jugador es menor.
                   ganar = false;
                   System.out.println("\nLa banca gano.\n");
-                } else if (mano2.getPuntuacionMano() != 7.5) { // La maquina pierde
-                  ganar = true;
-                }
+                } 
 
               } else {
                 System.out.println("Introduzca un valor correcto.");
@@ -116,9 +122,9 @@ public class JuegoSieteYMedia {
 
           jugadorPro.setSaldo(ganar); // Se resta o se suma la apuesta al saldo
           if (ganar) {
-            System.out.println("Ganaste");
+            System.out.println("Has sumado " + jugadorPro.getApuesta() + " € a tu cartera.");
           } else {
-            System.out.println("Perdiste");
+            System.out.println("Has perdido " + jugadorPro.getApuesta() + " € que han sido restados de tu cartera.");
           }
 
           // Nueva apuesta
