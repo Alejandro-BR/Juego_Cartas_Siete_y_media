@@ -1,4 +1,3 @@
-
 /**
  * Metodo main JuegoSieteYMedia
  * 
@@ -137,6 +136,12 @@ public class JuegoSieteYMedia {
             } else {
               System.out.println("Gracias por apostar de nuevo");
               System.out.println("Este es el dinero que dispone " + jugadorPro.getSaldo());
+              System.out.print("\nBarajando: ");
+              for (int i = 0; i < 10; i++) {
+                System.out.print("\u25A1");
+                Thread.sleep(1000); // Esto es para aumentar el tiempo que tarda
+              }
+              System.out.println();
             }
 
           } else {
@@ -158,7 +163,7 @@ public class JuegoSieteYMedia {
           nuevaPartida = false;
         } else {
           System.out.println("Jugararemos de nuevo");
-          System.out.print("Cargando: ");
+          System.out.print("Barajando: ");
           for (int i = 0; i < 10; i++) {
             System.out.print("\u25A1");
             Thread.sleep(1000); // Esto es para aumentar el tiempo que tarda
