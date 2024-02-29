@@ -43,15 +43,18 @@ public class JuegoSieteYMedia {
         "╚══════════════════════════════════════════╝\n";
 }
 
+/**
+ * Mostrar una portada
+ */
   private static void portada(){
     // Borrar pantalla
     System.out.print("\033[H\033[2J");
     System.out.flush();
     // Pintamos la portada
-    System.out.println("\n\033[31m╔══════════════════════════════════════════════════╗");
-    System.out.println("║\033[31m  BIENVENIDO AL JUEGO DE                     \033[0m║");
-    System.out.println("║\033[31m                LA SIETE Y MEDIA              \033[0m║");
-    System.out.println("╚══════════════════════════════════════════════════╝\n\033[0m \n");
+    System.out.println("\n╔══════════════════════════════════════════════════╗");
+    System.out.println("║\033[34m              BIENVENIDO AL JUEGO DE              \033[0m║");
+    System.out.println("║\033[34m                 LA SIETE Y MEDIA                 \033[0m║");
+    System.out.println("╚══════════════════════════════════════════════════╝\n");
   }
 
   public static void main(String[] args) {
