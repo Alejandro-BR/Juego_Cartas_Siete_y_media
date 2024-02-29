@@ -84,7 +84,6 @@ public class JuegoSieteYMedia {
    */
   private static void creditos() {
     limpiar();
-    
     // Pintamos los creditos
     System.out.println("\n  ╔══════════════════════════════════════════════════╗");
     System.out.println("  ║\033[31m               GRACIAS POR SU DINERO              \033[0m║");
@@ -242,7 +241,7 @@ public class JuegoSieteYMedia {
                 nuevaApuesta = false; //No haces mas apuestas
               } else if (salirApuesta.equalsIgnoreCase("si")) {
                 System.out.println("Gracias por apostar de nuevo");
-                System.out.println(jugador.getNombre() + ", este es el dinero que dispone " + jugador.getSaldo());
+                System.out.println(jugador.getNombre() + ", este es el dinero del que dispone " + jugador.getSaldo());
                 barajando();
                 limpiar();
               }
@@ -274,6 +273,7 @@ public class JuegoSieteYMedia {
         } else {
           System.out.println("\nNueva partida:");
           barajando();
+          limpiar();
         }
 
       } while (nuevaPartida);

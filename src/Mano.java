@@ -73,7 +73,7 @@ public class Mano {
    * Mostrar la puntuacion
    */
   public void mostrarPuntuacion() {
-    System.out.println("Puntuacion de la mano: " + puntuacionMano);
+    System.out.println("Puntuacion de la mano: " + puntuacionMano + "\n");
   }
 
   /**
