@@ -1,7 +1,7 @@
 /**
- * Metodo main JuegoSieteYMedia
+ * JuegoSieteYMedia
  * 
- * Contendrá el método main, donde se hace la lógica
+ * Contendrá el main, donde se hace la lógica
  * del turno primero del jugador hasta que se plante o pierda y luego el
  * turno de la banca.
  * 
@@ -18,10 +18,10 @@ public class JuegoSieteYMedia {
    */
   private static void barajando() {
     System.out.print("\nBarajando: ");
-    try {
+    try { //Es obligatorio para porder meter el retardo
       for (int i = 0; i < 10; i++) {
         System.out.print("🂠");
-        Thread.sleep(500); // Esto es para aumentar el tiempo que tarda
+        Thread.sleep(500); // Retardo
       }
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -84,6 +84,7 @@ public class JuegoSieteYMedia {
    */
   private static void creditos() {
     limpiar();
+    
     // Pintamos los creditos
     System.out.println("\n  ╔══════════════════════════════════════════════════╗");
     System.out.println("  ║\033[31m               GRACIAS POR SU DINERO              \033[0m║");
@@ -116,12 +117,13 @@ public class JuegoSieteYMedia {
       Baraja barajaESP = new Baraja();
       boolean nuevaPartida = true; // Variable para el bucle general de la partida
       boolean ganar = false; // Variable que controla si se suma o se recta la apuesta
+      boolean nuevaApuesta = true; //Variable que se utiliza para ir realizando apuestas
 
       portada();
-
+      //Partida
       do {
-        barajaESP.inicializaBaraja(); // Inicializamos baraja
-        barajaESP.barajar(); // Barajamos
+        barajaESP.inicializaBaraja(); // Inicializamos la baraja
+        barajaESP.barajar(); // Barajamos las cartas
 
         // Nombre
         System.out.print("Jugador introduzca su nombre: ");
@@ -131,50 +133,49 @@ public class JuegoSieteYMedia {
         System.out.print("Jugador introduzca su saldo: ");
         int saldo = Integer.parseInt(System.console().readLine());
 
-        // Creamos al jugado y su mano
-        Jugador jugadorPro = new Jugador(saldo, nombre);
-        Mano mano1 = new Mano();
+        // Creamos al jugado y su mano con los datos pedidos
+        Jugador jugador = new Jugador(saldo, nombre);
+        Mano manoJugador = new Mano();
 
-        // Creamos la maquina y su mano
-        // Jugador maquina = new Jugador(10, "Banca");
-        Mano mano2 = new Mano();
+        // Creamos la mano de la banca
+        Mano manoBanca = new Mano();
 
         // Apuesta
-        boolean nuevaApuesta = true;
         do {
-
           // Realizar apuesta
           System.out.print("Introduce tu apuesta: ");
           int apuesta = Integer.parseInt(System.console().readLine());
 
-          jugadorPro.setApuesta(apuesta);
-          // Si la apuesta es mayor al saldo repetira lo de pedir apuesta dentro del
-          // setApuesta
+          jugador.setApuesta(apuesta);
+          // Si la apuesta es mayor al saldo repetira lo de pedir apuesta dentro del metodo
 
-          System.out.println("Apostaste " + jugadorPro.getApuesta() + " € \n");
+          System.out.println("Apostaste " + jugador.getApuesta() + " € \n"); //Muestra lo apostado
 
-          // Codigo del juego
-          boolean salirBucle1 = false;
+          // Codigo donde juega el jugador
+          boolean salirJuego = false;
           do {
-            mano1.setCartas(barajaESP.extraerCarta());
-            mano1.setPuntuacionMano();
-            mano1.mostrarPuntuacion();
-            if (mano1.getContador() == 0) {
-              mano1.setContador(); // Solo la primera vez despues no
+            manoJugador.setCartas(barajaESP.extraerCarta()); //Se saca una carta y se pone en la mano
+            manoJugador.setPuntuacionMano(); //Se modifica la puntuacion de la mano
+            manoJugador.mostrarPuntuacion(); //Se muestra la puntuacion de la mano
+            if (manoJugador.getContador() == 0) { //Esto es para arreglar un fallo 
+              manoJugador.setContador(); // Solo la primera vez despues no
             }
 
-            if (mano1.getPuntuacionMano() > 7.5) {
-              salirBucle1 = true;
+            //Comprobar si ganas o pierdes
+            if (manoJugador.getPuntuacionMano() > 7.5) {
+              salirJuego = true;
               System.out.println("¡Te has pasado!");
               ganar = false; // pierdes
-            } else if (mano1.getPuntuacionMano() == 7.5) {
+            } else if (manoJugador.getPuntuacionMano() == 7.5) {
               System.out.println("Ganaste");
-              salirBucle1 = true;
+              salirJuego = true;
               ganar = true; // ganas
             } else {
 
+              //Pintamos el menu y se elige una opcion
               System.out.println("\n" + menu());
               int opcion;
+              //Controlando que el numero introducido sea 1 o 2
               do {
                 System.out.print("Opcion: ");
                 opcion = Integer.parseInt(System.console().readLine());
@@ -185,37 +186,35 @@ public class JuegoSieteYMedia {
               } while (opcion < 1 || opcion > 2);
 
               if (opcion == 1) {
-                salirBucle1 = false;
+                salirJuego = false; //Pides otra carta
               } else if (opcion == 2) {
-                salirBucle1 = true;
+                salirJuego = true; //Te plantas
                 System.out.print("Te has plantado con ");
-                mano1.mostrarPuntuacion();
+                manoJugador.mostrarPuntuacion();
 
-                // Juega la maquina
+                // Juega la banca
                 System.out.println("\nTurno de la banca:\n");
                 do {
-                  mano1.getPuntuacionMano();
-                  mano2.setCartas(barajaESP.extraerCarta()); // Extrae una carta
-                  mano2.setPuntuacionMano(); // Cambia la puntuacion de la mano
-                  mano2.mostrarPuntuacion(); // Muestra la puntuacion
-                  if (mano2.getContador() == 0) {
-                    mano2.setContador(); // Solo la primera vez despues no
+                  manoJugador.getPuntuacionMano(); //Muestras la puntuacion de la mano del jugador
+                  manoBanca.setCartas(barajaESP.extraerCarta()); // Extrae una carta
+                  manoBanca.setPuntuacionMano(); // Cambia la puntuacion de la mano
+                  manoBanca.mostrarPuntuacion(); // Muestra la puntuacion
+                  if (manoBanca.getContador() == 0) { //Esto es para arreglar un fallo
+                    manoBanca.setContador(); // Solo la primera vez despues no
                   }
 
                   System.out.println();
-                  Thread.sleep(1000); // Esto es para aumentar el tiempo que tarda
-                } while (mano2.getPuntuacionMano() < 7.5 && mano2.getPuntuacionMano() <= mano1.getPuntuacionMano());
-                // La banca saca cartas mientras que <7.5 o hasta que supere a la mano del
-                // jugador.
+                  Thread.sleep(1000); // Retardo
+                } while (manoBanca.getPuntuacionMano() < 7.5 && manoBanca.getPuntuacionMano() <= manoJugador.getPuntuacionMano());
+                // La banca saca cartas mientras que <7.5 o hasta que supere a la mano del jugador.
 
-                if (mano2.getPuntuacionMano() > 7.5 || mano2.getPuntuacionMano() < mano1.getPuntuacionMano()) {
-                  // La banca pierde si se pasa de 7.5 O si la mano de maquina es menor que la del
-                  // jugador
-                  ganar = true;
+                if (manoBanca.getPuntuacionMano() > 7.5 || manoBanca.getPuntuacionMano() < manoJugador.getPuntuacionMano()) {
+                  // La banca pierde si se pasa de 7.5 O si la mano de maquina es menor que la del jugador
+                  ganar = true; //Ganas
                   System.out.println("¡ENHORABUENA!La banca se ha pasado.");
-                } else if (mano2.getPuntuacionMano() == 7.5 || mano1.getPuntuacionMano() < mano2.getPuntuacionMano()) {
+                } else if (manoBanca.getPuntuacionMano() == 7.5 || manoJugador.getPuntuacionMano() < manoBanca.getPuntuacionMano()) {
                   // La maquina gana si obtiene 7.5 O si la puntuacion del jugador es menor.
-                  ganar = false;
+                  ganar = false; //Pierdes
                   System.out.println("\nLa banca gana.\n");
                 }
 
@@ -223,26 +222,27 @@ public class JuegoSieteYMedia {
                 System.out.println("Introduzca un valor correcto.");
               }
             }
-          } while (!salirBucle1);
+          } while (!salirJuego);
 
-          jugadorPro.setSaldo(ganar); // Se resta o se suma la apuesta al saldo
+          //Conclusion de la ronda
+          jugador.setSaldo(ganar); // Se resta o se suma la apuesta al saldo
           if (ganar) {
-            System.out.println("Has sumado " + jugadorPro.getApuesta() + " € a tu cartera.");
+            System.out.println("Has sumado " + jugador.getApuesta() + " € a tu cartera.");
           } else {
-            System.out.println("Has perdido " + jugadorPro.getApuesta() + " € que han sido restados de tu cartera.");
+            System.out.println("Has perdido " + jugador.getApuesta() + " € que han sido restados de tu cartera.");
           }
 
           // Nueva apuesta
-          if (jugadorPro.getSaldo() > 0) {
+          if (jugador.getSaldo() > 0) {
             String salirApuesta;
             do {
               System.out.print("\n¿Quiere hacer otra apuesta? (🃏 si / 🚫 no): ");
               salirApuesta = System.console().readLine();
               if (salirApuesta.equalsIgnoreCase("no")) {
-                nuevaApuesta = false;
+                nuevaApuesta = false; //No haces mas apuestas
               } else if (salirApuesta.equalsIgnoreCase("si")) {
                 System.out.println("Gracias por apostar de nuevo");
-                System.out.println("Este es el dinero que dispone " + jugadorPro.getSaldo());
+                System.out.println(jugador.getNombre() + ", este es el dinero que dispone " + jugador.getSaldo());
                 barajando();
                 limpiar();
               }
@@ -250,12 +250,12 @@ public class JuegoSieteYMedia {
 
           } else {
             nuevaApuesta = false;
-            System.out.println("Gracias por jugar a este juego pero ya no le queda saldo");
+            System.out.println("Gracias por jugar a este juego pero ya no le queda saldo.");
           }
 
-          // Restablece mano a cero todo
-          mano1.reset();
-          mano2.reset();
+          // Restablece la mano
+          manoJugador.reset();
+          manoBanca.reset();
 
           barajaESP.inicializaBaraja(); // Inicializamos baraja
           barajaESP.barajar(); // Barajamos
@@ -270,16 +270,15 @@ public class JuegoSieteYMedia {
         } while (!salirPartida.equalsIgnoreCase("no") && !salirPartida.equalsIgnoreCase("si"));
 
         if (salirPartida.equalsIgnoreCase("no")) {
-          nuevaPartida = false;
+          nuevaPartida = false; //Se sale del bucle y se termina el juego
         } else {
-          System.out.println("Jugararemos de nuevo");
+          System.out.println("\nNueva partida:");
           barajando();
         }
 
       } while (nuevaPartida);
 
-      // System.out.println("\nGracias por jugar y por su dinero :)\n");
-      creditos();
+      creditos(); //Mostrar los creditos del juego
 
     } catch (InputMismatchException ime) {
       System.out.println("\nError: Escribiste letras en vez de numeros\n");
@@ -287,6 +286,5 @@ public class JuegoSieteYMedia {
       System.out.println("\nMenjase de error: " + e.getMessage());
       System.out.println("La clase del error: " + e.getClass() + " \n");
     }
-
   }
 }

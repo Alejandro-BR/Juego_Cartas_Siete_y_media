@@ -33,7 +33,7 @@ public class Baraja {
     for (int i = 0; i < palos.length; i++) {
       for (int j = 0; j < valores.length; j++) {
         cartas[index] = new Carta(palos[i], valores[j]);
-        cartas[index].setPuntuacion(); // Le damos valor con la funcion .darPuntuacion()
+        cartas[index].darPuntuacion(); // Le damos valor con la funcion
         index++;
       }
     }
@@ -71,11 +71,13 @@ public class Baraja {
   }
 
   /**
-   * 40 * carta.toString()
+   * Metodo para verificar la baraja
+   * 
+   * 40 * carta.toString() + la puntuacion
    */
-  public void getBaraja() {
-    for (int i = 0; i < cartas.length; i++) {
-      System.out.printf("%-20s PUNTUACION: %1.2f\n",cartas[i].toString(), cartas[i].getPuntuacion());
-    }
-  }
+  // public void getBaraja() {
+  //   for (int i = 0; i < cartas.length; i++) {
+  //     System.out.printf("%-20s PUNTUACION: %1.2f\n",cartas[i].toString(), cartas[i].getPuntuacion());
+  //   }
+  // }
 }

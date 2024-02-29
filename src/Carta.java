@@ -1,7 +1,7 @@
 /**
  * Clase Carta
  * 
- * Gestiona el palo y valor asignado, ademas de la puntuatuacion.
+ * Gestiona el palo y valor asignado, ademas de la puntuacion.
  * 
  * @author Alejandro Barrionuevo Rosado
  * @author Jose Molina Melendez
@@ -31,7 +31,7 @@ public class Carta {
   /**
    * Asignar la puntuacion de la carta segun su valor.
    */
-  public void setPuntuacion() {
+  public void darPuntuacion() {
     switch (this.valores) {
       case "1":
         this.puntuacion = 1.0;
@@ -77,7 +77,7 @@ public class Carta {
   private String simbolo(){
     switch (this.palos) {
       case "Oros":
-        return "\uD83E\uDD47";
+        return "🪙";
       case "Copas":
         return "🏆";
       case "Espadas":

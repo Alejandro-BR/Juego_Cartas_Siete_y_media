@@ -1,13 +1,9 @@
 /**
  * Clase Jugador
  * 
- * Gestiona las cartas o mano que tiene un jugador, el saldo y
- * la apuesta que realiza. Tendrás que implementar una serie de métodos
- * para obtener la puntuación de su mano, otro para recibir una carta de
- * la baraja, realizar apuesta...
+ * Gestiona el saldo y la apuesta que realiza ademas de su nombre.
  * 
- * La puntuacion de la mano y todo lo referente a la mano se creara en la clase
- * Mano.
+ * La puntuacion de la mano y todo lo referente a la mano se creara en la clase Mano.
  * 
  * @author Alejandro Barrionuevo Rosado
  * @author Jose Molina Melendez
@@ -25,7 +21,6 @@ public class Jugador {
    * Contructor de la clase Jugador
    * 
    * @param saldo   int
-   * @param apuesta int
    * @param nombre  String
    */
   public Jugador(int saldo, String nombre) {
@@ -75,14 +70,13 @@ public class Jugador {
         apuesta = Integer.parseInt(System.console().readLine());
       } while (apuesta > saldo);
     }
-    
     this.apuesta = apuesta;
   }
 
   /**
    * Cambiar el valor del atributo saldo
    * 
-   * ganar --> suma
+   * ganar  --> suma
    * perder --> resta
    * 
    * @param ganarRonda boolean
@@ -94,6 +88,4 @@ public class Jugador {
       this.saldo -= this.apuesta;
     }
   }
-
-
 }

@@ -1,10 +1,8 @@
-import java.util.Arrays;
-
 /**
  * Clase Mano
  * 
- * Contendría los métodos de añadir una carta a la mano del
- * jugador y de calcular la puntuación de la mano del jugador.
+ * Gestiona las cartas o mano que tiene un jugador y la banca, contendría los métodos de añadir
+ * una carta a la mano del jugador y de calcular la puntuación de la mano del jugador.
  * 
  * @author Alejandro Barrionuevo Rosado
  * @author Jose Molina Melendez
@@ -19,15 +17,9 @@ public class Mano {
   private double puntuacionMano; // Puntuacion de la mano
   private int contador; // Variable auxiliar
 
-  //////// Constructores
-  /**
-   * Contructor de la clase Mano
-   * 
-   * @param cartas Objeto Carta
-   */
+  //////// Constructor
   public Mano() { // Cartas carta
     this.contador = 0;
-    // this.cartas[contador] = cartas;
     this.puntuacionMano = 0;
   }
 
@@ -85,16 +77,7 @@ public class Mano {
   }
 
   /**
-   * toString
-   */
-  @Override
-  public String toString() {
-    return "Mano cartas = " + Arrays.toString(cartas) + ", puntuacionMano = " + puntuacionMano + ", contador = "
-        + contador
-        + " ";
-  }
-
-  /**
+   * Saber cuantas cartas tenemos en la mano.
    * 
    * @return int
    */
@@ -112,5 +95,4 @@ public class Mano {
       this.cartas[i] = null;
     }
   }
-
 }
