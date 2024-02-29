@@ -1,15 +1,7 @@
 /**
  * Clase Carta
  * 
- * Gestiona el palo y número asignado y también un método que te
- * diga la puntuación de esa carta.
- * 
- * Se utiliza la baraja de cartas española de 4 palos y 10 cartas por cada palo.
- * 
- * Palos: Oros, Copas, Espadas y Bastos
- * 
- * Cada Palo tiene 10 cartas numeradas de la siguiente manera:
- * 1, 2, 3, 4, 5, 6, 7, Sota, Caballo y Rey
+ * Gestiona el palo y valor asignado, ademas de la puntuatuacion.
  * 
  * @author Alejandro Barrionuevo Rosado
  * @author Jose Molina Melendez
@@ -36,6 +28,9 @@ public class Carta {
 
   //////// Metodos
 
+  /**
+   * Asignar la puntuacion de la carta segun su valor.
+   */
   public void setPuntuacion() {
     switch (this.valores) {
       case "1":
@@ -66,27 +61,32 @@ public class Carta {
   }
 
   /**
+   * Obtener la puntuacion
    * 
-   * @return palos
-   */
-  public String getPalos() {
-    return palos;
-  }
-
-  /**
-   * 
-   * @return valores
-   */
-  public String getValores() {
-    return valores;
-  }
-
-  /**
-   * 
-   * @return puntuacion
+   * @return double puntuacion
    */
   public double getPuntuacion() {
     return puntuacion;
+  }
+
+  /**
+   * Simbolo de los palos
+   * 
+   * @return String simbolo
+   */
+  private String simbolo(){
+    switch (this.palos) {
+      case "Oros":
+        return "\uD83E\uDD47";
+      case "Copas":
+        return "🏆";
+      case "Espadas":
+        return "⚔️";
+      case "Bastos":
+        return "🌳";
+      default:
+        return palos;
+    }
   }
 
   /**
@@ -94,8 +94,6 @@ public class Carta {
    */
   @Override
   public String toString() {
-    return String.format("%s de %s", this.valores, this.palos);
+    return String.format("%s de %s", this.valores, simbolo());
   }
-  
-
 }
