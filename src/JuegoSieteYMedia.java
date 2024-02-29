@@ -55,6 +55,24 @@ public class JuegoSieteYMedia {
     System.out.println("║\033[34m              BIENVENIDO AL JUEGO DE              \033[0m║");
     System.out.println("║\033[34m                 LA SIETE Y MEDIA                 \033[0m║");
     System.out.println("╚══════════════════════════════════════════════════╝\n");
+    System.out.println("                             _____");
+    System.out.println(" _____                _____ |6    |");
+    System.out.println("|2    | _____        |5    || o o | ");
+    System.out.println("|  o  ||3    | _____ | o o || o o | _____");
+    System.out.println("|     || o o ||4    ||  o  || o o ||7    |");
+    System.out.println("|  o  ||     || o o || o o ||____9|| o o | _____");
+    System.out.println("|____Z||  o  ||     ||____S|       |o o o||8    | _____");
+    System.out.println("       |____E|| o o |              | o o ||o o o||9    |");
+    System.out.println("              |____h|              |____L|| o o ||o o o|");
+    System.out.println("                                          |o o o||o o o|");
+    System.out.println("                                          |____8||o o o|");
+    System.out.println("                                                 |____6|\n");
+
+    try {
+      Thread.sleep(500);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 
   public static void main(String[] args) {
@@ -63,7 +81,6 @@ public class JuegoSieteYMedia {
       boolean nuevaPartida = true; // Variable para el bucle general de la partida
       boolean ganar = false; // Variable que controla si se suma o se recta la apuesta
 
-      // System.out.println("\nBIENVENIDO AL JUEGO DE LA SIETE Y MEDIA\n");
       portada();
 
       do {
@@ -77,8 +94,6 @@ public class JuegoSieteYMedia {
         // Saldo
         System.out.print("Jugador introduzca su saldo: ");
         int saldo = Integer.parseInt(System.console().readLine());
-        // int saldo = JOptionPane.showInputDialog("Introduzca su saldo"); ////Pedir con
-        // ventana emergente
 
         // Creamos al jugado y su mano
         Jugador jugadorPro = new Jugador(saldo, nombre);
@@ -124,18 +139,25 @@ public class JuegoSieteYMedia {
             } else {
 
               System.out.println("\n" + menu());
-              System.out.print("Opcion: ");
-              int opcion1 = Integer.parseInt(System.console().readLine());
-              System.out.println();
+              int opcion;
+              do {
+                System.out.print("Opcion: ");
+                opcion = Integer.parseInt(System.console().readLine());
+                System.out.println();
+                if (opcion < 1 || opcion > 2) {
+                  System.out.println("Por favor, introduzca una opcion correcta.\n");
+                }
+              } while (opcion < 1 || opcion > 2);
 
-              if (opcion1 == 1) {
+              if (opcion == 1) {
                 salirBucle1 = false;
-              } else if (opcion1 == 2) {
+              } else if (opcion == 2) {
                 salirBucle1 = true;
                 System.out.print("Te has plantado con ");
                 mano1.mostrarPuntuacion();
 
                 // Juega la maquina
+                System.out.println("\nTurno de la banca:\n");
                 do {
                   mano1.getPuntuacionMano();
                   mano2.setCartas(barajaESP.extraerCarta()); // Extrae una carta
@@ -183,7 +205,7 @@ public class JuegoSieteYMedia {
             } else {
               System.out.println("Gracias por apostar de nuevo");
               System.out.println("Este es el dinero que dispone " + jugadorPro.getSaldo());
-              barajando();
+              barajando(); 
             }
 
           } else {
@@ -194,6 +216,9 @@ public class JuegoSieteYMedia {
           // Restablece mano a cero todo
           mano1.reset();
           mano2.reset();
+          
+          barajaESP.inicializaBaraja(); // Inicializamos baraja
+          barajaESP.barajar(); // Barajamos
 
         } while (nuevaApuesta);
 
