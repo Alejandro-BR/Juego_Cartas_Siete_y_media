@@ -1,8 +1,8 @@
 /**
  * Clase Baraja
  * 
- * Contiene un conjunto (array) de cartas, incluyendo todos los
- * palos y valores posibles. Debe contener los métodos de barajar las
+ * Contiene un conjunto de cartas, incluyendo todos los
+ * palos y valores posibles. Contiene los métodos de barajar las
  * cartas y repartir una carta.
  * 
  * @author Alejandro Barrionuevo Rosado
@@ -11,22 +11,20 @@
 
 public class Baraja {
 
-  //////// ATRIBUTOS
+  //////// Atributos
   private String[] palos = { "Oros", "Copas", "Espadas", "Bastos" }; // Oros, Copas, Espadas y Bastos.
   private String[] valores = { "1", "2", "3", "4", "5", "6", "7", "Sota", "Caballo", "Rey" }; // 1, 2, 3, 4, 5, 6, 7, Sota, Caballo y Rey.
   private Carta[] cartas;
   private int numCartas;
 
-  //////// CONSTRUCTORES
+  //////// Contructor
   public Baraja() { // La baraja contiene 40 cartas multiplicando el palo por valor.
     numCartas = palos.length * valores.length;
     cartas = new Carta[numCartas];
   }
 
-  //////// METODOS
+  //////// Metodos
   /**
-   * inicializaBaraja
-   * 
    * Inicializar la baraja
    */
   public void inicializaBaraja() {
@@ -41,7 +39,7 @@ public class Baraja {
   }
 
   /**
-  * BARAJAR
+  * Barajar
   */
   public void barajar() {
     for (int i = 0; i < cartas.length; i++) {
@@ -53,7 +51,9 @@ public class Baraja {
   }
 
   /**
-   * EXTRAER CARTA
+   * Extraer una carta de la baraja.
+   * Esa carta sera eliminada de la baraja.
+   * 
    * @return cartaExtraida
    */
   public Carta extraerCarta() {
@@ -77,29 +77,4 @@ public class Baraja {
       System.out.printf("%-20s PUNTUACION: %1.2f\n",cartas[i].toString(), cartas[i].getPuntuacion());
     }
   }
-
-  /**
-   * 
-   * @return palos
-   */
-  public String[] getPalos() {
-    return palos;
-  }
-
-  /**
-   * 
-   * @return valores
-   */
-  public String[] getValores() {
-    return valores;
-  }
-
-  /**
-   * 
-   * @return cartas
-   */
-  public Carta[] getCartas() {
-    return cartas;
-  }
-
 }
