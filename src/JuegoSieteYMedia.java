@@ -1,4 +1,3 @@
-
 /**
  * Metodo main JuegoSieteYMedia
  * 
@@ -7,7 +6,7 @@
  * turno de la banca.
  * 
  * @author Alejandro Barrionuevo Rosado
- * @author Jose Molina Melendez //Jose poner ventana emergente :)
+ * @author Jose Molina Melendez 
  */
 
 import java.util.InputMismatchException;
@@ -31,25 +30,30 @@ public class JuegoSieteYMedia {
   }
 
   /**
+   * Borrar la pantalla del terminal
+   */
+  private static void limpiar() {
+    System.out.print("\033[H\033[2J");
+    System.out.flush();
+  }
+
+  /**
    * Mostrar si pedir otra carta o plantarse
    * 
    * @return String
    */
   private static String menu() {
-    return 
-        "╔══════════════════════════════════════════╗\n" +
+    return "╔══════════════════════════════════════════╗\n" +
         "║  Opción 1: Pedir otra carta.             ║\n" +
         "║  Opción 2: Plantarse.                    ║\n" +
         "╚══════════════════════════════════════════╝\n";
-}
+  }
 
-/**
- * Mostrar una portada
- */
-  private static void portada(){
-    // Borrar pantalla
-    System.out.print("\033[H\033[2J");
-    System.out.flush();
+  /**
+   * Mostrar una portada
+   */
+  private static void portada() {
+    limpiar();
     // Pintamos la portada
     System.out.println("\n╔══════════════════════════════════════════════════╗");
     System.out.println("║\033[34m              BIENVENIDO AL JUEGO DE              \033[0m║");
@@ -69,10 +73,42 @@ public class JuegoSieteYMedia {
     System.out.println("                                                 |____6|\n");
 
     try {
-      Thread.sleep(500);
+      Thread.sleep(500); // Retardo
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+  }
+
+  /**
+   * Mostrar los creditos
+   */
+  private static void creditos() {
+    limpiar();
+    // Pintamos los creditos
+    System.out.println("\n  ╔══════════════════════════════════════════════════╗");
+    System.out.println("  ║\033[31m               GRACIAS POR SU DINERO              \033[0m║");
+    System.out.println("  ║\033[31m                   ¡HASTA PRONTO!                 \033[0m║");
+    System.out.println("  ╚══════════════════════════════════════════════════╝\n");
+    System.out.println("                      (");
+    System.out.println("                        )     (");
+    System.out.println("                 ___...(-------)-....___");
+    System.out.println("             .-\"\"       )    (          \"-.");
+    System.out.println("       .-'``'|-._             )         _.-|");
+    System.out.println("      /  .--.|   `\"\"---...........---\"\"`   |");
+    System.out.println("     /  /    |                             |");
+    System.out.println("     |  |    |                             |");
+    System.out.println("      \\  \\   |   \033[32m Alejandro Barrionuevo  \033[0m  |");
+    System.out.println("       `\\ `\\ |  \033[32m            y        \033[0m      |");
+    System.out.println("         `\\ `|   \033[32m      José Molina       \033[0m  |");
+    System.out.println("         _/ /\\                             /");
+    System.out.println("        (__/  \\                           /");
+    System.out.println("     _..---\"\"` \\                         /`\"\"---.._");
+    System.out.println("  .-'           \\                       /          '-.");
+    System.out.println(":               `\"-.__             __.-\"`              :");
+    System.out.println(":                  ) \"\"---...---\"\" (                 :");
+    System.out.println(" '._               `\"--...___...--\"`              _.'");
+    System.out.println("       ..--\"\"                                \"\"--..");
+    System.out.println("               \"\"\"----.....______.....----\"\"\"   \n");
   }
 
   public static void main(String[] args) {
@@ -120,7 +156,6 @@ public class JuegoSieteYMedia {
           // Codigo del juego
           boolean salirBucle1 = false;
           do {
-
             mano1.setCartas(barajaESP.extraerCarta());
             mano1.setPuntuacionMano();
             mano1.mostrarPuntuacion();
@@ -169,15 +204,17 @@ public class JuegoSieteYMedia {
 
                   System.out.println();
                   Thread.sleep(1000); // Esto es para aumentar el tiempo que tarda
-                } while (mano2.getPuntuacionMano() < 7.5 && mano2.getPuntuacionMano() <= mano1.getPuntuacionMano()); 
-                // La banca saca cartas mientras que <7.5 o hasta que supere a la mano del jugador.
+                } while (mano2.getPuntuacionMano() < 7.5 && mano2.getPuntuacionMano() <= mano1.getPuntuacionMano());
+                // La banca saca cartas mientras que <7.5 o hasta que supere a la mano del
+                // jugador.
 
-                if (mano2.getPuntuacionMano() > 7.5 || mano2.getPuntuacionMano() < mano1.getPuntuacionMano()) { 
-                  // La banca pierde si se pasa de 7.5 O  si la  mano  de  maquina  es  menor  que la  del  jugador
+                if (mano2.getPuntuacionMano() > 7.5 || mano2.getPuntuacionMano() < mano1.getPuntuacionMano()) {
+                  // La banca pierde si se pasa de 7.5 O si la mano de maquina es menor que la del
+                  // jugador
                   ganar = true;
                   System.out.println("¡ENHORABUENA!La banca se ha pasado.");
-                } else if (mano2.getPuntuacionMano() == 7.5 || mano1.getPuntuacionMano() < mano2.getPuntuacionMano()) { 
-                  // La maquina gana  si  obtiene  7.5  O  si  la  puntuacion  del  jugador  es  menor.
+                } else if (mano2.getPuntuacionMano() == 7.5 || mano1.getPuntuacionMano() < mano2.getPuntuacionMano()) {
+                  // La maquina gana si obtiene 7.5 O si la puntuacion del jugador es menor.
                   ganar = false;
                   System.out.println("\nLa banca gana.\n");
                 }
@@ -197,16 +234,19 @@ public class JuegoSieteYMedia {
 
           // Nueva apuesta
           if (jugadorPro.getSaldo() > 0) {
-
-            System.out.print("\nQuiere apostar de nuevo (si o no): ");
-            String salirPartida1 = System.console().readLine();
-            if (salirPartida1.equalsIgnoreCase("no")) {
-              nuevaApuesta = false;
-            } else {
-              System.out.println("Gracias por apostar de nuevo");
-              System.out.println("Este es el dinero que dispone " + jugadorPro.getSaldo());
-              barajando(); 
-            }
+            String salirApuesta;
+            do {
+              System.out.print("\n¿Quiere hacer otra apuesta? (🃏 si / 🚫 no): ");
+              salirApuesta = System.console().readLine();
+              if (salirApuesta.equalsIgnoreCase("no")) {
+                nuevaApuesta = false;
+              } else if (salirApuesta.equalsIgnoreCase("si")) {
+                System.out.println("Gracias por apostar de nuevo");
+                System.out.println("Este es el dinero que dispone " + jugadorPro.getSaldo());
+                barajando();
+                limpiar();
+              }
+            } while (!salirApuesta.equalsIgnoreCase("no") && !salirApuesta.equalsIgnoreCase("si"));
 
           } else {
             nuevaApuesta = false;
@@ -216,17 +256,20 @@ public class JuegoSieteYMedia {
           // Restablece mano a cero todo
           mano1.reset();
           mano2.reset();
-          
+
           barajaESP.inicializaBaraja(); // Inicializamos baraja
           barajaESP.barajar(); // Barajamos
 
         } while (nuevaApuesta);
 
         // Querer jugar de nuevo o terminar el juego
-        System.out.print("\nQuieres jugar otra partida (si o no): ");
-        String salirPartida2 = System.console().readLine();
+        String salirPartida;
+        do {
+          System.out.print("\nQuieres jugar otra partida (si o no): ");
+          salirPartida = System.console().readLine();
+        } while (!salirPartida.equalsIgnoreCase("no") && !salirPartida.equalsIgnoreCase("si"));
 
-        if (salirPartida2.equalsIgnoreCase("no")) {
+        if (salirPartida.equalsIgnoreCase("no")) {
           nuevaPartida = false;
         } else {
           System.out.println("Jugararemos de nuevo");
@@ -235,7 +278,8 @@ public class JuegoSieteYMedia {
 
       } while (nuevaPartida);
 
-      System.out.println("\nGracias por jugar y por su dinero :)\n");
+      // System.out.println("\nGracias por jugar y por su dinero :)\n");
+      creditos();
 
     } catch (InputMismatchException ime) {
       System.out.println("\nError: Escribiste letras en vez de numeros\n");
