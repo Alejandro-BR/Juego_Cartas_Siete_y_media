@@ -240,6 +240,7 @@ public class JuegoSieteYMedia {
               if (salirApuesta.equalsIgnoreCase("no")) {
                 nuevaApuesta = false; //No haces mas apuestas
               } else if (salirApuesta.equalsIgnoreCase("si")) {
+                nuevaApuesta = true;
                 System.out.println("Gracias por apostar de nuevo");
                 System.out.println(jugador.getNombre() + ", este es el dinero del que dispone " + jugador.getSaldo());
                 barajando();
@@ -271,6 +272,7 @@ public class JuegoSieteYMedia {
         if (salirPartida.equalsIgnoreCase("no")) {
           nuevaPartida = false; //Se sale del bucle y se termina el juego
         } else {
+          nuevaPartida = true;
           System.out.println("\nNueva partida:");
           barajando();
           limpiar();
